@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash.css') }}" />
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <!-- start: Sidebar -->
+    <div class="sidebar-overlay" data-dismiss="sidebar"></div>
+    <div class="sidebar">
+        <div class="sidebar-brand-wrapper">
+            <a href="#" class="sidebar-brand">
+                <img src="https://placehold.co/32x32" alt="" class="sidebar-brand-image" />
+                <span class="sidebar-brand-name">FIREFIGHTER</span>
+            </a>
+        </div>
+        <div class="sidebar-menu-wrapper">
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item-title">
+                    <span class="sidebar-menu-item-title-expanded">Menu</span>
+                    <span class="sidebar-menu-item-title-collapsed"><i class="ri-more-fill"></i></span>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="{{ url_for('dashboard') }}" class="sidebar-menu-item-link">
+                        <span class="sidebar-menu-item-link-icon"><i class="ri-dashboard-3-line"></i></span>
+                        <span class="sidebar-menu-item-link-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item-link">
+                        <span class="sidebar-menu-item-link-icon"><i class="ri-apps-2-line"></i></span>
+                        <span class="sidebar-menu-item-link-text">Apps</span>
+                        <span class="sidebar-menu-item-link-arrow"><i class="ri-arrow-right-s-line"></i></span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li class="sidebar-submenu-item">
+                            <a href="{{ url_for('camera') }}" class="sidebar-submenu-item-link">
+                                <span class="sidebar-submenu-item-link-text">Camera</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-submenu-item">
+                            <a href="{{ url_for('gps') }}" class="sidebar-submenu-item-link">
+                                <span class="sidebar-submenu-item-link-text">GPS</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <li class="sidebar-menu-item">
+                        <a href="{{ url_for('settings') }}" class="sidebar-menu-item-link">
+                            <span class="sidebar-menu-item-link-icon"><i class="ri-dashboard-3-line"></i></span>
+                            <span class="sidebar-menu-item-link-text">Settings</span>
+                        </a>
+                    </li>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end: Sidebar -->
+
+    <!-- start: Main -->
+    <div class="main">
+        <div class="topbar">
+            <a href="#" class="topbar-brand">
+                <img src="https://placehold.co/32x32" alt="" class="topbar-brand-image" />
+            </a>
+            <button type="button" class="topbar-button topbar-toggle" data-toggle="sidebar">
+                <i class="ri-menu-line"></i>
+            </button>
+            <div class="topbar-right">
+                <div class="dropdown">
+                    <button class="dropdown-toggle" id="profileDropdown" data-toggle="dropdown">
+                        <img src="https://placehold.co/32x32" alt="Profile" class="profile-image" />
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" id="logoutButton">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <!-- Bagian ini tidak lagi menampilkan judul Dashboard -->
+            <div class="content">
+                <h1 class="content-title">{% block content_title %}contoh{% endblock %}</h1>
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <!-- end: Main -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.10"></script>
+    <script src="{{ url_for('static', filename='js/dash.js') }}"></script>
+</body>
+</html>
